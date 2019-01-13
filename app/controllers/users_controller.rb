@@ -32,4 +32,15 @@ class UsersController < ApplicationController
         end
     end
 
+    def logout
+        @user = User.find_by(username: params[:username])
+        @session = Session.where(user: @user).last
+        @session.logged_out = DateTime.current()
+        if @session.save
+            render json: {responce: 'success'}
+        else
+            render json: {error: 'unable to log out'}, status: 401
+        end
+    end
+
 end
