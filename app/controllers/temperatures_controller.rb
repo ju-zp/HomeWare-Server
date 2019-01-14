@@ -8,7 +8,6 @@ class TemperaturesController < ApplicationController
         else
             render json: {error: 'Unable to record temperature'}, status: 501
         end
-        
     end
 
 end
