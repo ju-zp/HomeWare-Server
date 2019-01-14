@@ -1,7 +1,9 @@
 class TemperaturesController < ApplicationController
 
     def reading
-        puts 'hello'
+        @user = User.find_by(username: params[:username])
+        puts @user
+        puts params
     end
 
 end
