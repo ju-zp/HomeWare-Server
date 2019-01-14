@@ -1,7 +1,6 @@
 class UsersController < ApplicationController 
 
     def signup
-        puts 'login'
         @user = User.new(username: params[:username], password: params[:password])
         if @user.save
             Session.create(user: @user, logged_in: DateTime.current())
@@ -12,7 +11,6 @@ class UsersController < ApplicationController
     end
 
     def login 
-        puts 'signup'
         @user = User.find_by(username: params[:username])
         if @user && @user.authenticate(params[:password])
             Session.create(user: @user, logged_in: DateTime.current())
@@ -23,7 +21,6 @@ class UsersController < ApplicationController
     end
 
     def validate
-        puts 'validate'
         @user = User.find_by(username: params[:username])
         if @user
             render json: {username: @user.username, id: @user.id}
@@ -33,8 +30,7 @@ class UsersController < ApplicationController
     end
 
     def logout
-        @user = User.find_by(username: params[:username])
-        @session = Session.where(user: @user).last
+        @session = User.find_by(username: params[:username]).sessions.last
         @session.logged_out = DateTime.current()
         if @session.save
             render json: {responce: 'success'}
