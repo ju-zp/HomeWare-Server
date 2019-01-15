@@ -11,6 +11,10 @@ class ColorsController < ApplicationController
         end
     end
 
+    def getColors
+        
+    end
+
     private 
 
     def color_params
