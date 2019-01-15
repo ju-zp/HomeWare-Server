@@ -13,11 +13,8 @@ class ColorsController < ApplicationController
 
     def getColors
         @user = User.find_by(username: params[:username])
-        if @user.colors
-            render json: {colors: @user.colors}, status: 201
-        else
-            render json: {error: "Couldn't find any saved colors"}, status: 501
-        byebug
+        render json: {colors: @user.colors}, status: 201
+       
     end
 
     private 
