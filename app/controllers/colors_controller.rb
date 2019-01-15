@@ -12,7 +12,8 @@ class ColorsController < ApplicationController
     end
 
     def getColors
-        @user = Uer.find_by(username: params[:username])
+        @user = User.find_by(username: params[:username])
+        byebug
     end
 
     private 
