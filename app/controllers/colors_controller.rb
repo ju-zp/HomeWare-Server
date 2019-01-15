@@ -1,6 +1,7 @@
 class ColorsController < ApplicationController
 
     def saveColor
+        @user = User.find_by(username: params[:username])
         @color = Color.new(color_params)
         byebug
         puts "hello"
