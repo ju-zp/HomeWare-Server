@@ -13,7 +13,8 @@ class ColorsController < ApplicationController
 
     def getColors
         @user = User.find_by(username: params[:username])
-        byebug
+        render json: {colors: @user.colors}, status: 201
+       
     end
 
     private 
