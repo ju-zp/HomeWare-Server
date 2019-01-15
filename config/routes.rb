@@ -8,4 +8,7 @@ Rails.application.routes.draw do
 
   #temperature routes
   post 'reading', to: 'temperatures#reading'
+
+  #color routes
+  post 'color', to: 'colors#saveColor'
 end
