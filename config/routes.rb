@@ -11,4 +11,5 @@ Rails.application.routes.draw do
 
   #color routes
   post 'color', to: 'colors#saveColor'
+  get 'colors', to: 'colors#getColors'
 end
