@@ -15,6 +15,14 @@ ActiveRecord::Schema.define(version: 2019_01_15_090920) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "boards", force: :cascade do |t|
+    t.string "name"
+    t.bigint "home_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["home_id"], name: "index_boards_on_home_id"
+  end
+
   create_table "colors", force: :cascade do |t|
     t.bigint "user_id"
     t.integer "red"
@@ -26,42 +34,41 @@ ActiveRecord::Schema.define(version: 2019_01_15_090920) do
     t.index ["user_id"], name: "index_colors_on_user_id"
   end
 
+  create_table "homes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "lights", force: :cascade do |t|
-    t.bigint "session_id"
+    t.bigint "board_id"
     t.datetime "switched_on"
     t.datetime "switched_off"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["session_id"], name: "index_lights_on_session_id"
-  end
-
-  create_table "sessions", force: :cascade do |t|
-    t.bigint "user_id"
-    t.datetime "logged_in"
-    t.datetime "logged_out"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_sessions_on_user_id"
+    t.index ["board_id"], name: "index_lights_on_board_id"
   end
 
   create_table "temperature_readings", force: :cascade do |t|
-    t.bigint "session_id"
+    t.bigint "board_id"
     t.integer "reading"
     t.datetime "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["session_id"], name: "index_temperature_readings_on_session_id"
+    t.index ["board_id"], name: "index_temperature_readings_on_board_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
+    t.bigint "home_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["home_id"], name: "index_users_on_home_id"
   end
 
+  add_foreign_key "boards", "homes"
   add_foreign_key "colors", "users"
-  add_foreign_key "lights", "sessions"
-  add_foreign_key "sessions", "users"
-  add_foreign_key "temperature_readings", "sessions"
+  add_foreign_key "lights", "boards"
+  add_foreign_key "temperature_readings", "boards"
 end
