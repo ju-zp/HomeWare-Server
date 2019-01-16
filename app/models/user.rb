@@ -1,5 +1,5 @@
 class User < ApplicationRecord
     has_secure_password
-    has_many :sessions
+    belongs_to :home
     has_many :colors
 end

@@ -1,3 +1,3 @@
 class Light < ApplicationRecord
-  belongs_to :session
+  belongs_to :board
 end
