@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   #color routes
   post 'color', to: 'colors#saveColor'
   post 'colors', to: 'colors#getColors'
+
+  #environment routes
+  post 'environment', to: 'environment#getEnvironment'
 end
