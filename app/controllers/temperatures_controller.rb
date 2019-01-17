@@ -12,7 +12,18 @@ class TemperaturesController < ApplicationController
     end
 
     def getTemperatures
-        puts 'hello'
+        @data = TemperatureReading.all
+        @data = @data[@data.length-30..@data.length]
+        time = 15
+        @format = @data.map do |d|
+            time -= 0.5
+            {time: time, temp: d.reading}
+        end
+        if @format
+            render json: {data: @format}, status: 201
+        else
+            render json: {error: 'Unable to get temperature'}, status: 501
+        end
     end
 
 end
