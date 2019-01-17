@@ -11,4 +11,8 @@ class TemperaturesController < ApplicationController
         end
     end
 
+    def getTemperatures
+        puts 'hello'
+    end
+
 end

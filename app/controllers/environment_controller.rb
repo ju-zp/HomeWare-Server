@@ -5,7 +5,7 @@ class EnvironmentController < ApplicationController
         @home = Home.find(@user.home_id)
         if @home 
             # render json: {home: @home.name, boards: @home.boards.map{|b| {name: b.name, lights: b.lights, temp: b.temperatures}}}
-            render json: @home, include: {boards: { include: [:lights, :temperatures]}}
+            render json: @home, include: {boards: { include: [:lights, :temperatures]}, users: {}}
         else
             render json: {error: 'No environment found'}, status: 401
         end
