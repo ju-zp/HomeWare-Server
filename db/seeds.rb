@@ -8,6 +8,10 @@
 
 Home.delete_all
 Board.delete_all
+Light.delete_all
+Temperature.delete_all
 
 home = Home.create(name: 'new home')
-Board.create(name: 'board', home: home)
+board = Board.create(name: 'board', home_id: home.id)
+Light.create(board_id: board.id, switched_on: false)
+Temperature.create(interval: 30, board_id: board.id)

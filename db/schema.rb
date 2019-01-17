@@ -42,20 +42,26 @@ ActiveRecord::Schema.define(version: 2019_01_15_090920) do
 
   create_table "lights", force: :cascade do |t|
     t.bigint "board_id"
-    t.datetime "switched_on"
-    t.datetime "switched_off"
+    t.boolean "switched_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["board_id"], name: "index_lights_on_board_id"
   end
 
   create_table "temperature_readings", force: :cascade do |t|
-    t.bigint "board_id"
+    t.bigint "temperature_id"
     t.integer "reading"
-    t.datetime "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["board_id"], name: "index_temperature_readings_on_board_id"
+    t.index ["temperature_id"], name: "index_temperature_readings_on_temperature_id"
+  end
+
+  create_table "temperatures", force: :cascade do |t|
+    t.integer "interval"
+    t.bigint "board_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_temperatures_on_board_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,8 +73,5 @@ ActiveRecord::Schema.define(version: 2019_01_15_090920) do
     t.index ["home_id"], name: "index_users_on_home_id"
   end
 
-  add_foreign_key "boards", "homes"
   add_foreign_key "colors", "users"
-  add_foreign_key "lights", "boards"
-  add_foreign_key "temperature_readings", "boards"
 end
