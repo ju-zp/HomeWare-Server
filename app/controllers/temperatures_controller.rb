@@ -13,11 +13,11 @@ class TemperaturesController < ApplicationController
 
     def getTemperatures
         @data = TemperatureReading.all
-        @data = @data[@data.length-30..@data.length]
-        time = 15
+        @data = @data[@data.length-120..@data.length]
+        time = -60
         @format = @data.map do |d|
-            time -= 0.5
-            {time: time, temp: d.reading}
+            time += 0.5
+            {x: time, y: d.reading}
         end
         if @format
             render json: {data: @format}, status: 201

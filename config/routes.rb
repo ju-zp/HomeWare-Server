@@ -16,4 +16,5 @@ Rails.application.routes.draw do
 
   #environment routes
   post 'environment', to: 'environment#getEnvironment'
+  get 'weather', to: 'environment#getWeather'
 end
