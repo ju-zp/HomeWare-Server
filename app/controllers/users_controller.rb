@@ -27,5 +27,9 @@ class UsersController < ApplicationController
             render json: {error: 'Invalid username.'}, status: 401
         end
     end
+
+    def create
+        puts 'hello'
+    end
     
 end
