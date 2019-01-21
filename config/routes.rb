@@ -5,9 +5,12 @@ Rails.application.routes.draw do
   post 'signup', to: 'users#signup'
   post 'validate', to: 'users#validate'
   post 'logout', to: 'users#logout'
+  post 'create', to: 'users#create'
+  post 'destroy', to: 'users#destroy'
 
   #temperature routes
   post 'reading', to: 'temperatures#reading'
+  get 'temperatures', to: 'temperatures#getTemperatures'
 
   #color routes
   post 'color', to: 'colors#saveColor'
@@ -15,4 +18,5 @@ Rails.application.routes.draw do
 
   #environment routes
   post 'environment', to: 'environment#getEnvironment'
+  get 'weather', to: 'environment#getWeather'
 end
