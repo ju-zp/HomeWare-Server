@@ -1,5 +1,5 @@
 class User < ApplicationRecord
     has_secure_password
     belongs_to :home
-    has_many :colors
+    has_many :colors, dependent: :destroy
 end
