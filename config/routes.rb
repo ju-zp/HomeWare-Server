@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'validate', to: 'users#validate'
   post 'logout', to: 'users#logout'
   post 'create', to: 'users#create'
+  post 'destroy', to: 'users#destroy'
 
   #temperature routes
   post 'reading', to: 'temperatures#reading'
