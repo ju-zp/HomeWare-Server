@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   post 'create', to: 'users#create'
   post 'destroy', to: 'users#destroy'
 
+  #home routes
+  post 'edit', to: 'home#edit'
+
   #light routes
   post 'setLight', to: 'lights#setLight'
 
