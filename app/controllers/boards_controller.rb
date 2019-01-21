@@ -8,7 +8,6 @@ class BoardsController < ApplicationController
         else
             render json: {error: 'Unable to update board info'}, status: 401
         end
-        # puts 'hello'
     end
 
 end
