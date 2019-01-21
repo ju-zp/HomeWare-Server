@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   post 'destroy', to: 'users#destroy'
 
   #home routes
-  post 'edit', to: 'home#edit'
+  post 'homeEdit', to: 'home#edit'
+
+  #boards routes
+  post 'boardsEdit', to: 'boards#edit'
 
   #light routes
   post 'setLight', to: 'lights#setLight'
