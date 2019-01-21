@@ -40,7 +40,12 @@ class UsersController < ApplicationController
     end
 
     def destroy
-        puts 'hello'
+        @user = User.find_by(username: params[:username])
+        if @user.destroy
+            render json: {success: 'User was successfully destoryed'}, status: 200
+        else
+            render json: {error: 'Unable to delete user'}, status: 401
+        end
     end
 
     private
