@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   post 'create', to: 'users#create'
   post 'destroy', to: 'users#destroy'
 
+  #light routes
+  post 'setLight', to: 'lights#setLight'
+
   #temperature routes
   post 'reading', to: 'temperatures#reading'
   get 'temperatures', to: 'temperatures#getTemperatures'

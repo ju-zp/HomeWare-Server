@@ -5,7 +5,7 @@ class ColorsController < ApplicationController
         @color = Color.new(color_params)
         @color.user = @user
         if @color.save
-            render json: {response: 'Successfully save color'}, status: 201
+            render json: {response: 'Successfully save color', colors: @user.colors}, status: 201
         else
             render json: {error: 'Unable to save color'}, status: 501
         end
