@@ -1,24 +1,11 @@
-# README
+# Hou-Smart Server
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Introduction 
 
-Things you may want to cover:
+A rails backend for the Hou-Smart project. Hardware server can be found [here](https://github.com/ju-zp/Hou-Smart_hardware) and the client can be found [here](https://github.com/ju-zp/Hou-Smart_client). This serves as an api and has endpoint to manage activity on the hardware, user create and deletion and the ability to edit various resources with the project. It also communicates with the Dark Sky API to send weather information to the client.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Technologies
+* Ruby
+* Rails
+* Bcrypt
+* Dark Sky API
